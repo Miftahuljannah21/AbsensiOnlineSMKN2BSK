@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Online SMKN 2 BATUSANGKAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #FEF3C7 0%, #D1FAE5 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .floating-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Login Page -->
+    <div id="loginPage" class="min-h-screen flex items-center justify-center p-4">
+        <div class="max-w-md w-full">
+            <!-- Logo & Header -->
+            <div class="text-center mb-8 fade-in">
+                <div class="bg-yellow-400 w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center floating-animation">
+                    <i class="fas fa-graduation-cap text-3xl text-white"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Absensi Online</h1>
+                <h2 class="text-xl font-semibold text-yellow-600">SMKN 2 BATUSANGKAR</h2>
+                <p class="text-gray-600 mt-2">Sistem Absensi Digital Online</p>
+            </div>
+
+            <!-- Login Form -->
+            <div class="bg-white rounded-2xl card-shadow p-8 slide-in">
+                <form id="loginForm">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-semibold mb-3">Pilih Role</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="role" value="guru" class="sr-only peer" checked>
+                                <div class="bg-gray-50 peer-checked:bg-yellow-100 peer-checked:border-yellow-400 border-2 border-gray-200 rounded-xl p-4 text-center transition-all">
+                                    <i class="fas fa-chalkboard-teacher text-2xl text-yellow-600 mb-2"></i>
+                                    <p class="font-semibold text-gray-700">Guru</p>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="role" value="admin" class="sr-only peer">
+                                <div class="bg-gray-50 peer-checked:bg-green-100 peer-checked:border-green-400 border-2 border-gray-200 rounded-xl p-4 text-center transition-all">
+                                    <i class="fas fa-user-cog text-2xl text-green-600 mb-2"></i>
+                                    <p class="font-semibold text-gray-700">Admin</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-semibold mb-2">Username</label>
+                        <div class="relative">
+                            <i class="fas fa-user absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan username">
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+                        <div class="relative">
+                            <i class="fas fa-lock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                            <input type="password" class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 focus:border-transparent" placeholder="Masukkan password">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full btn-primary text-white font-semibold py-3 px-6 rounded-xl">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Masuk
+                    </button>
+                </form>
+
+                <div class="mt-6 text-center">
+                    <a href="#" class="text-yellow-600 hover:text-yellow-700 text-sm font-medium">Lupa Password?</a>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="mt-6 text-center">
+                <button onclick="showHelp()" class="text-gray-600 hover:text-gray-800 text-sm">
+                    <i class="fas fa-question-circle mr-1"></i>
+                    Butuh Bantuan?
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guru Dashboard -->
+    <div id="guruDashboard" class="hidden min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <div class="bg-yellow-400 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-800">Dashboard Guru</h1>
+                            <p class="text-sm text-gray-600">SMKN 2 Batusangkar</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button onclick="showSettings()" class="text-gray-600 hover:text-gray-800">
+                            <i class="fas fa-cog text-xl"></i>
+                        </button>
+                        <button onclick="logout()" class="text-red-600 hover:text-red-800">
+                            <i class="fas fa-sign-out-alt text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Welcome Section -->
+            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl p-6 mb-8 text-white">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-2">Selamat Datang, Pak/Bu Guru! 👋</h2>
+                        <p class="text-yellow-100">Hari ini, <span id="currentDate"></span></p>
+                    </div>
+                    <div class="hidden md:block">
+                        <i class="fas fa-chalkboard-teacher text-6xl text-yellow-200"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Absen Masuk -->
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">Absen Masuk</h3>
+                        <i class="fas fa-clock text-green-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">Catat kehadiran masuk Anda</p>
+                    <button onclick="absenMasuk()" class="w-full btn-success text-white font-semibold py-3 px-6 rounded-xl">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        Absen Masuk
+                    </button>
+                    <p class="text-sm text-gray-500 mt-2 text-center">Terakhir: Belum absen hari ini</p>
+                </div>
+
+                <!-- Absen Pulang -->
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">Absen Pulang</h3>
+                        <i class="fas fa-home text-orange-500 text-2xl"></i>
+                    </div>
+                    <p class="text-gray-600 mb-4">Catat kehadiran pulang Anda</p>
+                    <button onclick="absenPulang()" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-xl transition-all">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Absen Pulang
+                    </button>
+                    <p class="text-sm text-gray-500 mt-2 text-center">Terakhir: Belum absen hari ini</p>
+                </div>
+            </div>
+
+            <!-- Status & Calendar -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Status Kehadiran -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl card-shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Status Hari Ini</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Status</span>
+                                <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">Belum Absen</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Jam Masuk</span>
+                                <span class="text-gray-800 font-medium">-</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span class="text-gray-600">Jam Pulang</span>
+                                <span class="text-gray-800 font-medium">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Calendar -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl card-shadow p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Kalender Kehadiran</h3>
+                        <div class="grid grid-cols-7 gap-2 text-center">
+                            <div class="font-semibold text-gray-600 py-2">Min</div>
+                            <div class="font-semibold text-gray-600 py-2">Sen</div>
+                            <div class="font-semibold text-gray-600 py-2">Sel</div>
+                            <div class="font-semibold text-gray-600 py-2">Rab</div>
+                            <div class="font-semibold text-gray-600 py-2">Kam</div>
+                            <div class="font-semibold text-gray-600 py-2">Jum</div>
+                            <div class="font-semibold text-gray-600 py-2">Sab</div>
+                            
+                            <!-- Calendar days -->
+                            <div class="py-2 text-gray-400">28</div>
+                            <div class="py-2 text-gray-400">29</div>
+                            <div class="py-2 text-gray-400">30</div>
+                            <div class="py-2 text-gray-400">31</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">1</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">2</div>
+                            <div class="py-2 text-gray-400">3</div>
+                            
+                            <div class="py-2 text-gray-400">4</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">5</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">6</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">7</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">8</div>
+                            <div class="py-2 bg-green-100 text-green-800 rounded-lg font-medium">9</div>
+                            <div class="py-2 text-gray-400">10</div>
+                        </div>
+                        <div class="mt-4 flex items-center justify-center space-x-4 text-sm">
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-green-100 rounded mr-2"></div>
+                                <span class="text-gray-600">Hadir</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-yellow-100 rounded mr-2"></div>
+                                <span class="text-gray-600">Izin</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-3 h-3 bg-red-100 rounded mr-2"></div>
+                                <span class="text-gray-600">Alpha</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riwayat & Tutorial -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Riwayat Absensi -->
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">Riwayat Absensi</h3>
+                        <button class="text-yellow-600 hover:text-yellow-700 text-sm font-medium">Lihat Semua</button>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-800">Senin, 4 Des 2023</p>
+                                <p class="text-sm text-gray-600">07:30 - 15:45</p>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Hadir</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-800">Jumat, 1 Des 2023</p>
+                                <p class="text-sm text-gray-600">07:45 - 15:30</p>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Hadir</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                            <div>
+                                <p class="font-medium text-gray-800">Kamis, 30 Nov 2023</p>
+                                <p class="text-sm text-gray-600">Sakit</p>
+                            </div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Sakit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bantuan & Tutorial -->
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Bantuan & Tutorial</h3>
+                    <div class="space-y-4">
+                        <button onclick="showVideoTutorial()" class="w-full flex items-center p-3 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">
+                            <i class="fas fa-play-circle text-red-500 text-2xl mr-3"></i>
+                            <div class="text-left">
+                                <p class="font-medium text-gray-800">Video Tutorial</p>
+                                <p class="text-sm text-gray-600">Cara menggunakan aplikasi</p>
+                            </div>
+                        </button>
+                        <button onclick="showHelp()" class="w-full flex items-center p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
+                            <i class="fas fa-question-circle text-blue-500 text-2xl mr-3"></i>
+                            <div class="text-left">
+                                <p class="font-medium text-gray-800">Panduan Lengkap</p>
+                                <p class="text-sm text-gray-600">FAQ dan troubleshooting</p>
+                            </div>
+                        </button>
+                        <button onclick="contactSupport()" class="w-full flex items-center p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
+                            <i class="fas fa-headset text-green-500 text-2xl mr-3"></i>
+                            <div class="text-left">
+                                <p class="font-medium text-gray-800">Hubungi Support</p>
+                                <p class="text-sm text-gray-600">Bantuan teknis</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="hidden min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center">
+                        <div class="bg-green-500 w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user-cog text-white"></i>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-800">Dashboard Admin</h1>
+                            <p class="text-sm text-gray-600">SMKN 2 Batusangkar</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button onclick="exportData()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                            <i class="fas fa-download mr-2"></i>
+                            Export
+                        </button>
+                        <button onclick="logout()" class="text-red-600 hover:text-red-800">
+                            <i class="fas fa-sign-out-alt text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Total Guru</p>
+                            <p class="text-3xl font-bold text-gray-800">45</p>
+                        </div>
+                        <i class="fas fa-users text-blue-500 text-3xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Hadir Hari Ini</p>
+                            <p class="text-3xl font-bold text-green-600">0</p>
+                        </div>
+                        <i class="fas fa-check-circle text-green-500 text-3xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Izin/Sakit</p>
+                            <p class="text-3xl font-bold text-yellow-600">0</p>
+                        </div>
+                        <i class="fas fa-exclamation-circle text-yellow-500 text-3xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-medium text-gray-600">Alpha</p>
+                            <p class="text-3xl font-bold text-red-600">0</p>
+                        </div>
+                        <i class="fas fa-times-circle text-red-500 text-3xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daftar Guru -->
+            <div class="bg-white rounded-2xl card-shadow p-6 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Daftar Kehadiran Guru</h3>
+                    <div class="flex space-x-3">
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                            <option>Semua Jam</option>
+                            <option>Jam 1 (07:00-07:45)</option>
+                            <option>Jam 2 (07:45-08:30)</option>
+                            <option>Jam 3 (08:30-09:15)</option>
+                        </select>
+                        <button onclick="printReport()" class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                            <i class="fas fa-print mr-2"></i>
+                            Cetak
+                        </button>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="text-left py-3 px-4 font-semibold text-gray-700">Nama Guru</th>
+                                <th class="text-left py-3 px-4 font-semibold text-gray-700">NIP</th>
+                                <th class="text-left py-3 px-4 font-semibold text-gray-700">Jam Masuk</th>
+                                <th class="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
+                                <th class="text-left py-3 px-4 font-semibold text-gray-700">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-3 px-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center mr-3">
+                                            <span class="text-white font-semibold text-sm">AS</span>
+                                        </div>
+                                        <span class="font-medium">Mifta huljannah, S.Pd</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-4 text-gray-600">-</td>
+                                <td class="py-3 px-4 text-gray-600">07:30</td>
+                                <td class="py-3 px-4">
+                                    <select class="border border-gray-300 rounded-lg px-3 py-1 text-sm" onchange="updateStatus(this)">
+                                        <option value="hadir" selected>Hadir</option>
+                                        <option value="izin">Izin</option>
+                                        <option value="sakit">Sakit</option>
+                                        <option value="alpha">Alpha</option>
+                                    </select>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <button onclick="viewDetail()" class="text-blue-600 hover:text-blue-800 text-sm">
+                                        <i class="fas fa-eye mr-1"></i>
+                                        Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-3 px-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                            <span class="text-white font-semibold text-sm">SR</span>
+                                        </div>
+                                        <span class="font-medium">Silviana Eka Sari, M.Pd</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-4 text-gray-600">-</td>
+                                <td class="py-3 px-4 text-gray-600">07:25</td>
+                                <td class="py-3 px-4">
+                                    <select class="border border-gray-300 rounded-lg px-3 py-1 text-sm" onchange="updateStatus(this)">
+                                        <option value="hadir" selected>Hadir</option>
+                                        <option value="izin">Izin</option>
+                                        <option value="sakit">Sakit</option>
+                                        <option value="alpha">Alpha</option>
+                                    </select>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <button onclick="viewDetail()" class="text-blue-600 hover:text-blue-800 text-sm">
+                                        <i class="fas fa-eye mr-1"></i>
+                                        Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-100 hover:bg-gray-50">
+                                <td class="py-3 px-4">
+                                    <div class="flex items-center">
+                                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                                            <span class="text-white font-semibold text-sm">BH</span>
+                                        </div>
+                                        <span class="font-medium">?</span>
+                                    </div>
+                                </td>
+                                <td class="py-3 px-4 text-gray-600">?</td>
+                                <td class="py-3 px-4 text-gray-600">08.00</td>
+                                <td class="py-3 px-4">
+                                    <select class="border border-gray-300 rounded-lg px-3 py-1 text-sm" onchange="updateStatus(this)">
+                                        <option value="hadir">Hadir</option>
+                                        <option value="izin">Izin</option>
+                                        <option value="sakit" selected>Sakit</option>
+                                        <option value="alpha">Alpha</option>
+                                    </select>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <button onclick="viewDetail()" class="text-blue-600 hover:text-blue-800 text-sm">
+                                        <i class="fas fa-eye mr-1"></i>
+                                        Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Statistik -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Statistik Kehadiran Minggu Ini</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Senin</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">95%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Selasa</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 92%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">92%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Rabu</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 98%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">98%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Kamis</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 89%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">89%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-gray-600">Jumat</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 93%"></div>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">93%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl card-shadow p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Export Data</h3>
+                    <div class="space-y-4">
+                        <button onclick="exportPDF()" class="w-full flex items-center justify-center p-3 bg-red-50 hover:bg-red-100 border border-red-200 rounded-lg transition-colors">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="font-medium text-gray-800">Export ke PDF</span>
+                        </button>
+                        <button onclick="exportExcel()" class="w-full flex items-center justify-center p-3 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg transition-colors">
+                            <i class="fas fa-file-excel text-green-500 text-xl mr-3"></i>
+                            <span class="font-medium text-gray-800">Export ke Excel</span>
+                        </button>
+                        <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                            <p class="text-sm text-gray-600 mb-2">Periode Export:</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <input type="date" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                                <input type="date" class="border border-gray-300 rounded px-2 py-1 text-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Components -->
+    <div id="helpModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-gray-800">Bantuan</h3>
+                <button onclick="closeModal('helpModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="p-3 bg-yellow-50 rounded-lg">
+                    <h4 class="font-medium text-gray-800 mb-2">Cara Login</h4>
+                    <p class="text-sm text-gray-600">Pilih role (Guru/Admin), masukkan username dan password yang telah diberikan oleh admin sekolah.</p>
+                </div>
+                <div class="p-3 bg-green-50 rounded-lg">
+                    <h4 class="font-medium text-gray-800 mb-2">Cara Absen</h4>
+                    <p class="text-sm text-gray-600">Klik tombol "Absen Masuk" saat tiba di sekolah dan "Absen Pulang" saat akan meninggalkan sekolah.</p>
+                </div>
+                <div class="p-3 bg-blue-50 rounded-lg">
+                    <h4 class="font-medium text-gray-800 mb-2">Masalah Teknis</h4>
+                    <p class="text-sm text-gray-600">Jika mengalami kendala, hubungi admin IT sekolah atau gunakan fitur "Hubungi Support".</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize current date
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('id-ID', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Login functionality
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const role = document.querySelector('input[name="role"]:checked').value;
+            
+            // Hide login page
+            document.getElementById('loginPage').classList.add('hidden');
+            
+            // Show appropriate dashboard
+            if (role === 'guru') {
+                document.getElementById('guruDashboard').classList.remove('hidden');
+            } else {
+                document.getElementById('adminDashboard').classList.remove('hidden');
+            }
+        });
+
+        // Absen functions
+        function absenMasuk() {
+            const now = new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'});
+            alert(`✅ Absen masuk berhasil!\nWaktu: ${now}`);
+            // Update UI to show attendance status
+        }
+
+        function absenPulang() {
+            const now = new Date().toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'});
+            alert(`🏠 Absen pulang berhasil!\nWaktu: ${now}`);
+            // Update UI to show attendance status
+        }
+
+        // Admin functions
+        function updateStatus(select) {
+            const status = select.value;
+            const statusText = {
+                'hadir': 'Hadir',
+                'izin': 'Izin', 
+                'sakit': 'Sakit',
+                'alpha': 'Alpha'
+            };
+            alert(`Status berhasil diubah menjadi: ${statusText[status]}`);
+        }
+
+        function printReport() {
+            alert('📄 Fitur cetak laporan akan segera tersedia!');
+        }
+
+        function exportPDF() {
+            alert('📄 Export ke PDF berhasil! File akan diunduh otomatis.');
+        }
+
+        function exportExcel() {
+            alert('📊 Export ke Excel berhasil! File akan diunduh otomatis.');
+        }
+
+        function exportData() {
+            alert('📊 Pilih format export: PDF atau Excel dari menu Export Data di bawah.');
+        }
+
+        function viewDetail() {
+            alert('👁️ Detail kehadiran guru akan ditampilkan di halaman terpisah.');
+        }
+
+        // Modal functions
+        function showHelp() {
+            document.getElementById('helpModal').classList.remove('hidden');
+        }
+
+        function showVideoTutorial() {
+            alert('🎥 Video tutorial akan dibuka di tab baru.');
+        }
+
+        function showSettings() {
+            alert('⚙️ Halaman pengaturan akun akan segera tersedia!');
+        }
+
+        function contactSupport() {
+            alert('📞 Hubungi admin IT: 0812-3456-7890 atau email: it@smkn2batusangkar.sch.id');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function logout() {
+            if (confirm('Yakin ingin keluar dari aplikasi?')) {
+                // Hide all dashboards
+                document.getElementById('guruDashboard').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.add('hidden');
+                // Show login page
+                document.getElementById('loginPage').classList.remove('hidden');
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('fixed')) {
+                const modals = document.querySelectorAll('.fixed');
+                modals.forEach(modal => {
+                    if (modal.contains(e.target) && e.target === modal) {
+                        modal.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f0b7a3412b5f81',t:'MTc1Nzg2MTY0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
